@@ -196,19 +196,19 @@ namespace ThinkGeo.MapSuite.VehicleTracking
             Map1.CurrentExtent = new RectangleShape(-10785241.6495495, 3916508.33762434, -10778744.5183967, 3912187.74540771);
 
             // base map layer
-            WorldMapKitWmsWebOverlay worldMapKitWmsRoadOverlay = new WorldMapKitWmsWebOverlay("World Map Kit Road");
-            worldMapKitWmsRoadOverlay.Projection = WorldMapKitProjection.SphericalMercator;
-            worldMapKitWmsRoadOverlay.MapType = WorldMapKitMapType.Road;
+            WorldStreetsAndImageryOverlay worldMapKitWmsRoadOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Road");
+            worldMapKitWmsRoadOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
+            worldMapKitWmsRoadOverlay.MapType = WorldStreetsAndImageryMapType.Road;
             Map1.CustomOverlays.Add(worldMapKitWmsRoadOverlay);
 
-            WorldMapKitWmsWebOverlay worldMapKitWmsAerialOverlay = new WorldMapKitWmsWebOverlay("World Map Kit Aerial");
-            worldMapKitWmsAerialOverlay.Projection = WorldMapKitProjection.SphericalMercator;
-            worldMapKitWmsAerialOverlay.MapType = WorldMapKitMapType.Aerial;
+            WorldStreetsAndImageryOverlay worldMapKitWmsAerialOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Aerial");
+            worldMapKitWmsAerialOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
+            worldMapKitWmsAerialOverlay.MapType = WorldStreetsAndImageryMapType.Aerial;
             Map1.CustomOverlays.Add(worldMapKitWmsAerialOverlay);
 
-            WorldMapKitWmsWebOverlay worldMapKitWmsAerialWithLabelsOverlay = new WorldMapKitWmsWebOverlay("World Map Kit Aerial With Lables");
-            worldMapKitWmsAerialWithLabelsOverlay.Projection = WorldMapKitProjection.SphericalMercator;
-            worldMapKitWmsAerialWithLabelsOverlay.MapType = WorldMapKitMapType.AerialWithLabels;
+            WorldStreetsAndImageryOverlay worldMapKitWmsAerialWithLabelsOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Aerial With Lables");
+            worldMapKitWmsAerialWithLabelsOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
+            worldMapKitWmsAerialWithLabelsOverlay.MapType = WorldStreetsAndImageryMapType.AerialWithLabels;
             Map1.CustomOverlays.Add(worldMapKitWmsAerialWithLabelsOverlay);
 
             OpenStreetMapOverlay openStreetMapOverlay = new OpenStreetMapOverlay("Open Street Map");
@@ -469,14 +469,7 @@ namespace ThinkGeo.MapSuite.VehicleTracking
                     Map1.CustomOverlays.Add(vehicleOverlay);
 
                     // Add all the required columns so we can populate later
-                    vehicleOverlay.FeatureSource.Open();
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("IsCurrentPosition"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("Speed"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("DateTime"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("Longitude"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("Latitude"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("VehicleName"));
-                    vehicleOverlay.Columns.Add(new FeatureSourceColumn("Duration"));
+                    vehicleOverlay.FeatureSource.Open();                  
                 }
 
                 // Clear old vehicle's old positions
