@@ -182,10 +182,11 @@ namespace ThinkGeo.MapSuite.VehicleTracking
         {
             // Setup the map.
             Map1.MapUnit = GeographyUnit.Meter;
+            Map1.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
             Map1.MapTools.MiniMap.Enabled = true;
 
             Map1.MapTools.OverlaySwitcher.Enabled = true;
-            Map1.MapTools.OverlaySwitcher.BaseOverlayTitle = " ";
+            Map1.MapTools.OverlaySwitcher.BaseOverlayTitle = "ThinkGeo Cloud Maps: ";
 
             Map1.MapTools.MeasureMapTool.Enabled = true;
             Map1.MapTools.MeasureMapTool.Geodesic = true;
@@ -196,23 +197,25 @@ namespace ThinkGeo.MapSuite.VehicleTracking
             Map1.CurrentExtent = new RectangleShape(-10785241.6495495, 3916508.33762434, -10778744.5183967, 3912187.74540771);
 
             // base map layer
-            WorldStreetsAndImageryOverlay worldMapKitWmsRoadOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Road");
-            worldMapKitWmsRoadOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
-            worldMapKitWmsRoadOverlay.MapType = WorldStreetsAndImageryMapType.Road;
-            Map1.CustomOverlays.Add(worldMapKitWmsRoadOverlay);
+            ThinkGeoCloudMapsOverlay thinkgeoCloudLightMapOverlay = new ThinkGeoCloudMapsOverlay();
+            thinkgeoCloudLightMapOverlay.Name = "Light";
+            thinkgeoCloudLightMapOverlay.MapType = ThinkGeoCloudMapsMapType.Light;
+            Map1.CustomOverlays.Add(thinkgeoCloudLightMapOverlay);
 
-            WorldStreetsAndImageryOverlay worldMapKitWmsAerialOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Aerial");
-            worldMapKitWmsAerialOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
-            worldMapKitWmsAerialOverlay.MapType = WorldStreetsAndImageryMapType.Aerial;
-            Map1.CustomOverlays.Add(worldMapKitWmsAerialOverlay);
+            ThinkGeoCloudMapsOverlay thinkgeCloudDardMapOverlay = new ThinkGeoCloudMapsOverlay();
+            thinkgeCloudDardMapOverlay.Name = "Dark";
+            thinkgeCloudDardMapOverlay.MapType = ThinkGeoCloudMapsMapType.Dark;
+            Map1.CustomOverlays.Add(thinkgeCloudDardMapOverlay);
 
-            WorldStreetsAndImageryOverlay worldMapKitWmsAerialWithLabelsOverlay = new WorldStreetsAndImageryOverlay("World Map Kit Aerial With Lables");
-            worldMapKitWmsAerialWithLabelsOverlay.Projection = WorldStreetsAndImageryProjection.SphericalMercator;
-            worldMapKitWmsAerialWithLabelsOverlay.MapType = WorldStreetsAndImageryMapType.AerialWithLabels;
-            Map1.CustomOverlays.Add(worldMapKitWmsAerialWithLabelsOverlay);
+            ThinkGeoCloudMapsOverlay thinkgeoCloudAerialMapOverlay = new ThinkGeoCloudMapsOverlay();
+            thinkgeoCloudAerialMapOverlay.Name = "Aerial";
+            thinkgeoCloudAerialMapOverlay.MapType = ThinkGeoCloudMapsMapType.Aerial;
+            Map1.CustomOverlays.Add(thinkgeoCloudAerialMapOverlay);
 
-            OpenStreetMapOverlay openStreetMapOverlay = new OpenStreetMapOverlay("Open Street Map");
-            Map1.CustomOverlays.Add(openStreetMapOverlay);
+            ThinkGeoCloudMapsOverlay thinkgeoCloudHybridMapOverlay = new ThinkGeoCloudMapsOverlay();
+            thinkgeoCloudHybridMapOverlay.Name = "Hybrid";
+            thinkgeoCloudHybridMapOverlay.MapType = ThinkGeoCloudMapsMapType.Hybrid;
+            Map1.CustomOverlays.Add(thinkgeoCloudHybridMapOverlay);
 
             // Add spatial fences
             UpdateSpatialFencesToOverlay();
@@ -469,7 +472,7 @@ namespace ThinkGeo.MapSuite.VehicleTracking
                     Map1.CustomOverlays.Add(vehicleOverlay);
 
                     // Add all the required columns so we can populate later
-                    vehicleOverlay.FeatureSource.Open();                  
+                    vehicleOverlay.FeatureSource.Open();
                 }
 
                 // Clear old vehicle's old positions
