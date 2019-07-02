@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*===========================================
+    Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+    An API Key. These were sent to you via email when you signed up
+    with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+===========================================*/
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -182,7 +188,7 @@ namespace ThinkGeo.MapSuite.VehicleTracking
         {
             // Setup the map.
             Map1.MapUnit = GeographyUnit.Meter;
-            Map1.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
+            Map1.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
             Map1.MapTools.MiniMap.Enabled = true;
 
             Map1.MapTools.OverlaySwitcher.Enabled = true;
@@ -196,25 +202,25 @@ namespace ThinkGeo.MapSuite.VehicleTracking
             Map1.EditOverlay.EditSettings.IsResizable = false;
             Map1.CurrentExtent = new RectangleShape(-10785241.6495495, 3916508.33762434, -10778744.5183967, 3912187.74540771);
 
-            // base map layer
-            ThinkGeoCloudMapsOverlay thinkgeoCloudLightMapOverlay = new ThinkGeoCloudMapsOverlay();
+            // Please input your ThinkGeo Cloud API Key to enable the background map.
+            ThinkGeoCloudRasterMapsOverlay thinkgeoCloudLightMapOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud API Key");
             thinkgeoCloudLightMapOverlay.Name = "Light";
-            thinkgeoCloudLightMapOverlay.MapType = ThinkGeoCloudMapsMapType.Light;
+            thinkgeoCloudLightMapOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Light;
             Map1.CustomOverlays.Add(thinkgeoCloudLightMapOverlay);
 
-            ThinkGeoCloudMapsOverlay thinkgeCloudDardMapOverlay = new ThinkGeoCloudMapsOverlay();
+            ThinkGeoCloudRasterMapsOverlay thinkgeCloudDardMapOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud API Key");
             thinkgeCloudDardMapOverlay.Name = "Dark";
-            thinkgeCloudDardMapOverlay.MapType = ThinkGeoCloudMapsMapType.Dark;
+            thinkgeCloudDardMapOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Dark;
             Map1.CustomOverlays.Add(thinkgeCloudDardMapOverlay);
 
-            ThinkGeoCloudMapsOverlay thinkgeoCloudAerialMapOverlay = new ThinkGeoCloudMapsOverlay();
+            ThinkGeoCloudRasterMapsOverlay thinkgeoCloudAerialMapOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud API Key");
             thinkgeoCloudAerialMapOverlay.Name = "Aerial";
-            thinkgeoCloudAerialMapOverlay.MapType = ThinkGeoCloudMapsMapType.Aerial;
+            thinkgeoCloudAerialMapOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Aerial;
             Map1.CustomOverlays.Add(thinkgeoCloudAerialMapOverlay);
 
-            ThinkGeoCloudMapsOverlay thinkgeoCloudHybridMapOverlay = new ThinkGeoCloudMapsOverlay();
+            ThinkGeoCloudRasterMapsOverlay thinkgeoCloudHybridMapOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud API Key");
             thinkgeoCloudHybridMapOverlay.Name = "Hybrid";
-            thinkgeoCloudHybridMapOverlay.MapType = ThinkGeoCloudMapsMapType.Hybrid;
+            thinkgeoCloudHybridMapOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Hybrid;
             Map1.CustomOverlays.Add(thinkgeoCloudHybridMapOverlay);
 
             // Add spatial fences
